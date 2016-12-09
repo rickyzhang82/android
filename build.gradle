@@ -178,6 +178,10 @@ android {
             }
         }
 
+        debug {
+            applicationIdSuffix ".debug"
+        }
+
         beta {
             // This copies the debuggable attribute and debug signing configurations.
             initWith debug
@@ -186,6 +190,7 @@ android {
 
             applicationIdSuffix ".beta"
         }
+
     }
 
     applicationVariants.all { variant ->
