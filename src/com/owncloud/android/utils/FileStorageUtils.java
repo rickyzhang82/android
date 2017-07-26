@@ -52,21 +52,20 @@ public class FileStorageUtils {
     public static final Integer SORT_SIZE = 2;
     public static Integer mSortOrder = SORT_NAME;
     public static Boolean mSortAscending = true;
+    public static final String FIXED_FILE_ROOT = "/mnt/extsd/Books";
 
     /**
      * Get local storage path for all data of the app in public storages.
      */
     public static String getDataFolder() {
-        File sdCard = Environment.getExternalStorageDirectory();
-        return sdCard.getAbsolutePath() + "/" + MainApp.getDataFolder();
+        return FIXED_FILE_ROOT + "/" + MainApp.getDataFolder();
     }
 
     /**
      * Get local owncloud storage path for accountName.
      */
     public static String getSavePath(String accountName) {
-        File sdCard = Environment.getExternalStorageDirectory();
-        return sdCard.getAbsolutePath() + "/" + MainApp.getDataFolder() + "/" + Uri.encode(accountName, "@");
+        return FIXED_FILE_ROOT + "/" + MainApp.getDataFolder() + "/" + Uri.encode(accountName, "@");
         // URL encoding is an 'easy fix' to overcome that NTFS and FAT32 don't allow ":" in file names,
         // that can be in the accountName since 0.1.190B
     }
@@ -84,8 +83,7 @@ public class FileStorageUtils {
      * Get absolute path to tmp folder inside datafolder in sd-card for given accountName.
      */
     public static String getTemporalPath(String accountName) {
-        File sdCard = Environment.getExternalStorageDirectory();
-        return sdCard.getAbsolutePath() + "/" + MainApp.getDataFolder() + "/tmp/" + Uri.encode(accountName, "@");
+        return FIXED_FILE_ROOT + "/" + MainApp.getDataFolder() + "/tmp/" + Uri.encode(accountName, "@");
             // URL encoding is an 'easy fix' to overcome that NTFS and FAT32 don't allow ":" in file names,
             // that can be in the accountName since 0.1.190B
     }
@@ -109,7 +107,7 @@ public class FileStorageUtils {
     }
     
     public static String getLogPath()  {
-        return Environment.getExternalStorageDirectory() + File.separator + MainApp.getDataFolder() + File.separator + "log";
+        return FIXED_FILE_ROOT + File.separator + MainApp.getDataFolder() + File.separator + "log";
     }
 
     public static String getInstantUploadFilePath(Context context, String fileName) {
