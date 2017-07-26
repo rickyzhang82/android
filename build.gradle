@@ -10,7 +10,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -84,7 +84,8 @@ android {
     buildToolsVersion '25.0.2'
 
     defaultConfig {
-
+        minSdkVersion 15
+        targetSdkVersion 24
         manifestPlaceholders.versionName = "2.4.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
